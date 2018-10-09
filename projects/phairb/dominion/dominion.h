@@ -128,4 +128,13 @@ int getWinners(int players[MAX_PLAYERS], struct gameState *state);
 /* Set array position of each player who won (remember ties!) to
    1, others to 0 */
 
+
+int smithy_card(int currentplayer, struct gameState *state, int handPos);
+/* Draws +3 cards */
+
+
+
+
+
+
 #endif
