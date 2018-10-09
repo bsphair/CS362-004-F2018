@@ -133,6 +133,7 @@ int smithy_card(int currentplayer, struct gameState *state, int handPos);
 /* Draws +3 cards */
 
 
+void adventurer_card(int drawntreasure, struct gameState *state, int currentPlayer, int cardDrawn, int temphand[MAX_HAND]);
 
 
 
