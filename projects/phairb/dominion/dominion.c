@@ -667,7 +667,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
   switch( card ) 
     {
     case adventurer:
-        adventurer_card(drawntreasure, state,  currentPlayer,  cardDrawn, temphand);
+        adventurer_card(drawntreasure, state, currentPlayer, cardDrawn, temphand);
 
       return 0;
 			
@@ -1284,7 +1284,7 @@ int updateCoins(int player, struct gameState *state, int bonus)
 int smithy_card(int currentplayer, struct gameState *state, int handPos){
   int i;
 
-  for(i = 0; i < 3; i++){
+  for(i = 0; i < 4; i++){
     drawCard(currentplayer, state);
   }
 
@@ -1306,7 +1306,7 @@ void adventurer_card(int drawntreasure, struct gameState *state, int currentPlay
 
         cardDrawn = state->hand[currentPlayer][state->handCount[currentPlayer]-1];//top card of hand is most recently drawn card.
 
-        if (cardDrawn == copper || cardDrawn == silver || cardDrawn == gold)
+        if (cardDrawn == copper || cardDrawn == silver)
             drawntreasure++;
         else{
             temphand[z]=cardDrawn;
@@ -1319,6 +1319,10 @@ void adventurer_card(int drawntreasure, struct gameState *state, int currentPlay
         z=z-1;
     }
 }
+
+
+
+
 
 void councilroom_card(struct gameState *state, int currentPlayer,  int handPos){
     int i;
@@ -1334,15 +1338,15 @@ void councilroom_card(struct gameState *state, int currentPlayer,  int handPos){
     //Each other player draws a card
     for (i = 0; i < state->numPlayers; i++)
     {
-        if ( i != currentPlayer )
-        {
-            drawCard(i, state);
-        }
+        drawCard(i, state);
     }
 
     //put played card in played card pile
     discardCard(handPos, currentPlayer, state, 0);
 }
+
+
+
 
 void village_card(struct gameState *state, int currentPlayer,  int handPos){
     drawCard(currentPlayer, state);
@@ -1351,14 +1355,17 @@ void village_card(struct gameState *state, int currentPlayer,  int handPos){
     state->numActions = state->numActions + 2;
 
     //discard played card from hand
-    discardCard(handPos, currentPlayer, state, 0);
+//    discardCard(handPos, currentPlayer, state, 0);
 }
+
+
+
 
 void greathall_card(struct gameState *state, int currentPlayer,  int handPos){
     drawCard(currentPlayer, state);
 
     //+1 Actions
-    state->numActions++;
+    state->numActions--;
 
     //discard card from hand
     discardCard(handPos, currentPlayer, state, 0);
