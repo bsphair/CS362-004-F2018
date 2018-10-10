@@ -135,7 +135,11 @@ int smithy_card(int currentplayer, struct gameState *state, int handPos);
 
 void adventurer_card(int drawntreasure, struct gameState *state, int currentPlayer, int cardDrawn, int temphand[MAX_HAND]);
 
+void councilroom_card(struct gameState *state, int currentPlayer,  int handPos);
 
+void village_card(struct gameState *state, int currentPlayer,  int handPos);
+
+void greathall_card(struct gameState *state, int currentPlayer,  int handPos);
 
 
 #endif
