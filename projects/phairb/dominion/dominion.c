@@ -1280,7 +1280,7 @@ int updateCoins(int player, struct gameState *state, int bonus)
 }
 
 
-//+3 Cards
+//Increase player's handsize by drawing 3 cards
 int smithy_card(int currentplayer, struct gameState *state, int handPos){
   int i;
 
@@ -1294,6 +1294,7 @@ int smithy_card(int currentplayer, struct gameState *state, int handPos){
 }
 
 
+//Reveals cards from the player's deck unti 2 Treasure cards are found.
 void adventurer_card(int drawntreasure, struct gameState *state, int currentPlayer, int cardDrawn, int temphand[MAX_HAND]){
     int z = 0;
 
@@ -1323,7 +1324,7 @@ void adventurer_card(int drawntreasure, struct gameState *state, int currentPlay
 
 
 
-
+//Each other player will draw a card
 void councilroom_card(struct gameState *state, int currentPlayer,  int handPos){
     int i;
 
@@ -1347,7 +1348,7 @@ void councilroom_card(struct gameState *state, int currentPlayer,  int handPos){
 
 
 
-
+//Gives the player 1 card and 2 actions
 void village_card(struct gameState *state, int currentPlayer,  int handPos){
     drawCard(currentPlayer, state);
 
@@ -1360,12 +1361,12 @@ void village_card(struct gameState *state, int currentPlayer,  int handPos){
 
 
 
-
+//Gives the player 1 card and 1 action
 void greathall_card(struct gameState *state, int currentPlayer,  int handPos){
     drawCard(currentPlayer, state);
 
     //+1 Actions
-    state->numActions--;
+    state->numActions++;
 
     //discard card from hand
     discardCard(handPos, currentPlayer, state, 0);
