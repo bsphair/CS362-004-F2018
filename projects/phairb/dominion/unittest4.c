@@ -25,7 +25,7 @@ int main(int argc, char** argv){
     int seed = 1000;
     int numPlayers = 2;
     int currentPlayer;
-    struct gameState G; //, testG;
+    struct gameState G;
     int k[10] = {adventurer, embargo, village, minion, mine, cutpurse,
                  sea_hag, tribute, smithy, council_room};
 
