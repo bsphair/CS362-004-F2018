@@ -1294,12 +1294,14 @@ int smithy_card(int currentplayer, struct gameState *state, int handPos){
 }
 
 
-//Reveals cards from the player's deck unti 2 Treasure cards are found.
+//Reveals cards from the player's deck until 2 Treasure cards are found.
 void adventurer_card(int drawntreasure, struct gameState *state, int currentPlayer, int cardDrawn, int temphand[MAX_HAND]){
     int z = 0;
 
     while(drawntreasure<2){
+        printf("Current deck count: %i\n", state->deckCount[currentPlayer]);
         if (state->deckCount[currentPlayer] <1){//if the deck is empty we need to shuffle discard and add to deck
+            printf("Gonna shuffle\n");
             shuffle(currentPlayer, state);
         }
 
@@ -1307,8 +1309,11 @@ void adventurer_card(int drawntreasure, struct gameState *state, int currentPlay
 
         cardDrawn = state->hand[currentPlayer][state->handCount[currentPlayer]-1];//top card of hand is most recently drawn card.
 
-        if (cardDrawn == copper || cardDrawn == silver)
+        printf("You drew this card: %i\n", cardDrawn);
+
+        if (cardDrawn == copper || cardDrawn == silver){
             drawntreasure++;
+        }
         else{
             temphand[z]=cardDrawn;
             state->handCount[currentPlayer]--; //this should just remove the top card (the most recently drawn one).

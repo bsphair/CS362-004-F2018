@@ -31,7 +31,7 @@ int main(int argc, char** argv) {
     /*Initialize the game*/
     initializeGame(numPlayers, k ,seed, &G);
 
-    printf("\n*** Test smithy_card() ***\n");
+    printf("\n*** Testing smithy_card() ***\n");
 
     int currentHandCount;
 
