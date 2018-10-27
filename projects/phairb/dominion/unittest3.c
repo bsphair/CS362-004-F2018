@@ -87,7 +87,7 @@ void testBonus(struct gameState G, int numPlayers, int numberOfTests, int bonus)
 
 
 
-int main() {
+int main(int argc, char** argv) {
     int a, i, cardMultiplier;
     int seed = 1000;
     int numPlayers = 2;

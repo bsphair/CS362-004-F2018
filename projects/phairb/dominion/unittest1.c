@@ -89,7 +89,7 @@ int main(int argc, char** argv){
 
 
 
-    printf("\n\nAll tests for testing numHandCards() passed!\n");
+    printf("\n\nAll tests for numHandCards() passed!\n");
 
 
     return 0;
