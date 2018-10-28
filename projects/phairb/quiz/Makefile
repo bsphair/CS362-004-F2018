@@ -1,6 +1,6 @@
 CFLAGS= -Wall -fpic -coverage -lm -std=c99
 
-player: testme.c
+testme: testme.c
 	gcc -o testme testme.c -g $(CFLAGS)
 	./testme
 
