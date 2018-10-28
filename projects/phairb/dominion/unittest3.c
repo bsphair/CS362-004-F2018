@@ -107,7 +107,7 @@ int main(int argc, char** argv) {
         noCards[i] = 0;
     }
 
-
+    //Initialize the game
     initializeGame(numPlayers, k ,seed, &G);
 
     printf("\n*** Testing updateCoins() ***\n\n");
@@ -118,30 +118,35 @@ int main(int argc, char** argv) {
 #endif
     testCoinCount(G, numPlayers, 5);    //5 represents the number of tests the function will run
 
+    //Test the Copper Card
 #if (NOISY_TEST == 1)
     printf("\n*** Test Copper Card ***\n");
 #endif
     cardMultiplier = 1;
     testCard(G, numPlayers, 5, coppers, handCount, cardMultiplier);
 
+    //Test the Silver Card
 #if (NOISY_TEST == 1)
     printf("\n*** Test Silver Card ***\n");
 #endif
     cardMultiplier = 2;
     testCard(G, numPlayers, 5, silvers, handCount, cardMultiplier);
 
+    //Test the Gold Card
 #if (NOISY_TEST == 1)
     printf("\n*** Test Gold Card ***\n");
 #endif
     cardMultiplier = 3;
     testCard(G, numPlayers, 5, golds, handCount, cardMultiplier);
 
+    //Test no card
 #if (NOISY_TEST == 1)
     printf("\n*** Test No Card ***\n");
 #endif
     cardMultiplier = 0;
     testCard(G, numPlayers, 5, noCards, handCount, cardMultiplier);
 
+    //Test addition of bonus
 #if (NOISY_TEST == 1)
     printf("\n*** Test Addition of Bonus ***\n");
 #endif

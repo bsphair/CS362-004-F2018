@@ -11,9 +11,11 @@
 #define PRINT_ALL_STATEMENTS 1
 
 void printCardAmount(struct gameState G){
+#if (PRINT_ALL_STATEMENTS == 1)
     printf("Current Card Status:\n");
     printf("Player 1 = %i cards\n", G.handCount[0]);
     printf("Player 2 = %i cards\n", G.handCount[1]);
+#endif
 }
 
 int assertTrue(int condition, char* statement){
@@ -52,7 +54,9 @@ int main(int argc, char** argv) {
 
     printf("\n*** Testing drawCard() ***\n\n");
 
+#if (PRINT_ALL_STATEMENTS == 1)
     printf("Number of players used for testing is 2 players. The first player will originally have 5 cards while the second player will have 0 cards.\n\n");
+#endif
 
     /*Initial cards*/
 #if (PRINT_ALL_STATEMENTS == 1)

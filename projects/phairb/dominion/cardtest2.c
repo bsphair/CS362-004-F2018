@@ -46,25 +46,23 @@ int main(int argc, char** argv) {
 
     printf("\n*** Testing adventurer_card() ***\n");
 
+    //Initialize the game
     initializeGame(numPlayers, k, seed, &G);
 
 
-//#if (NOISY_TEST == 1)
-//    printf("\n\n*** Test based on the Treasure cards in hand ***\n");
-//#endif
 
 
     //Test if the function can find Copper cards
 #if (NOISY_TEST == 1)
     printf("\n*** Test Case 1: Test Case Copper, Copper ***\n");
 #endif
-    currentPlayer = 0;
+    currentPlayer = 0;      //set the current player
 
-    memcpy(&testG, &G, sizeof(struct gameState));
-    deckcount = testG.deckCount[currentPlayer];
+    memcpy(&testG, &G, sizeof(struct gameState));   //copy the gamestate to testG
+    deckcount = testG.deckCount[currentPlayer];     //store the deckcount of current player
 
-    int newDeck1 [] = {copper, copper};
-    newDeckCount = 3;
+    int newDeck1 [] = {copper, copper};         //create new deck
+    newDeckCount = 3;                           //set newdeckcount
 
     for(i = 0; i < newDeckCount; i++){
         testG.deck[currentPlayer][--deckcount] = newDeck1[i];
@@ -76,7 +74,7 @@ int main(int argc, char** argv) {
     xtraCoins = 0;
     numBuys = 0;
 
-    handCount = testG.handCount[currentPlayer];
+    handCount = testG.handCount[currentPlayer];     //store the handcount of current player
 #if (NOISY_TEST == 1)
     printf("Actual Discard Count: %i \t Expected Discard Count: %i\n", testG.discardCount[currentPlayer], G.discardCount[currentPlayer]);
     printf("Actual Handcount: %i \t Expected Handcount: %i\n", testG.handCount[currentPlayer], G.handCount[currentPlayer] + newCards);
@@ -89,16 +87,16 @@ int main(int argc, char** argv) {
 #if (NOISY_TEST == 1)
     printf("\n*** Test Case 2: Test Case Copper, Gold ***\n");
 #endif
-    initializeGame(numPlayers, k, seed, &G);
-    memcpy(&testG, &G, sizeof(struct gameState));
+    initializeGame(numPlayers, k, seed, &G);            //re-initialize the game
+    memcpy(&testG, &G, sizeof(struct gameState));       //copy the gamestate to testG
 
 
-    currentPlayer = 0;
-    deckcount = testG.deckCount[currentPlayer];
+    currentPlayer = 0;                                  //set current player
+    deckcount = testG.deckCount[currentPlayer];         //store deckcount of current player
 
-    int newDeck2 [] = {copper, gold};
-    newDeckCount = 2;
-    testG.deckCount[currentPlayer] = newDeckCount;
+    int newDeck2 [] = {copper, gold};                   //create new deck
+    newDeckCount = 2;                                   //store size of new deck
+    testG.deckCount[currentPlayer] = newDeckCount;      //update player's deckcount
 
     for(i = 0; i < newDeckCount; i++){
         testG.deck[currentPlayer][i] = newDeck2[i];
@@ -107,11 +105,11 @@ int main(int argc, char** argv) {
     int temp[] = {};
 
     adventurer_card(0, &testG, 0, 0, temp);
+
 #if (NOISY_TEST == 1)
     printf("Actual Discard Count: %i \t Expected Discard Count: %i\n", testG.discardCount[currentPlayer], G.discardCount[currentPlayer] + 1);
     printf("Actual Handcount: %i \t Expected Handcount: %i\n", testG.handCount[currentPlayer], G.handCount[currentPlayer] + 2);
 #endif
-//    assertTF(testG.handCount[currentPlayer] == G.handCount[currentPlayer] + 2, "!!! Wrong number of cards in the player's hand !!!");
     assertTF(testG.discardCount[currentPlayer] == G.discardCount[currentPlayer] + 1, "!!! Test Case 2 Failed: Wrong amount of discarded cards !!!");
     assertTF(testG.handCount[currentPlayer] == G.handCount[currentPlayer] + newCards, "!!! Test Case 2 Failed: Wrong amount of cards in hand !!!");
 
@@ -122,16 +120,16 @@ int main(int argc, char** argv) {
 #if (NOISY_TEST == 1)
     printf("\n*** Test Case 3: Test Case Copper, NoCard, NoCard, Copper ***\n");
 #endif
-    initializeGame(numPlayers, k, seed, &G);
-    memcpy(&testG, &G, sizeof(struct gameState));
+    initializeGame(numPlayers, k, seed, &G);                //re-initialize the game
+    memcpy(&testG, &G, sizeof(struct gameState));           //copy the gamestate to testG
 
-    currentPlayer = 0;
-    deckcount = testG.deckCount[currentPlayer];
+    currentPlayer = 0;                                      //set current player
+    deckcount = testG.deckCount[currentPlayer];             //store the deckcount of current player
 
-    int NoCard = 0;
-    int newDeck3 [] = {copper, NoCard, NoCard, copper};
-    newDeckCount = 4;
-    testG.deckCount[currentPlayer] = newDeckCount;
+    int NoCard = 0;                                         //create a "junk" card
+    int newDeck3 [] = {copper, NoCard, NoCard, copper};     //make new deck with good + junk cards
+    newDeckCount = 4;                                       //store size of the new deck
+    testG.deckCount[currentPlayer] = newDeckCount;          //update the current player's deckcount
 
     for(i = 0; i < newDeckCount; i++){
         testG.deck[currentPlayer][i] = newDeck3[i];
@@ -140,6 +138,7 @@ int main(int argc, char** argv) {
     int temp1[] = {};
 
     adventurer_card(0, &testG, 0, 0, temp1);
+
 #if (NOISY_TEST == 1)
     printf("Actual Discard Count: %i \t Expected Discard Count: %i\n", testG.discardCount[currentPlayer], G.discardCount[currentPlayer] + 2);
     printf("Actual Handcount: %i \t Expected Handcount: %i\n", testG.handCount[currentPlayer], G.handCount[currentPlayer] + newCards);
@@ -153,15 +152,15 @@ int main(int argc, char** argv) {
 #if (NOISY_TEST == 1)
     printf("\n*** Test Case 4: Test Case: No Cards in the Player's Deck ***\n");
 #endif
-    initializeGame(numPlayers, k, seed, &G);
-    memcpy(&testG, &G, sizeof(struct gameState));
+    initializeGame(numPlayers, k, seed, &G);                //re-initialize the game
+    memcpy(&testG, &G, sizeof(struct gameState));           //copy the gamestate to testG
 
-    currentPlayer = 0;
-    deckcount = testG.deckCount[currentPlayer];
+    currentPlayer = 0;                                      //set current player
+    deckcount = testG.deckCount[currentPlayer];             //store the deckcount of current player
 
-    int newDeck4 [] = {};
-    newDeckCount = 0;
-    testG.deckCount[currentPlayer] = newDeckCount;
+    int newDeck4 [] = {};                                   //create a new deck with no cards
+    newDeckCount = 0;                                       //store size of the new deck
+    testG.deckCount[currentPlayer] = newDeckCount;          //update the current player's deckcount
 
     for(i = 0; i < newDeckCount; i++){
         testG.deck[currentPlayer][i] = newDeck4[i];
@@ -170,6 +169,7 @@ int main(int argc, char** argv) {
     int temp2[] = {};
 
     adventurer_card(0, &testG, 0, 0, temp2);
+
 #if (NOISY_TEST == 1)
     printf("Actual Discard Count: %i \t Expected Discard Count: %i\n", testG.discardCount[currentPlayer], G.discardCount[currentPlayer]);
     printf("Actual Handcount: %i \t Expected Handcount: %i\n", testG.handCount[currentPlayer], G.handCount[currentPlayer]);
@@ -185,15 +185,15 @@ int main(int argc, char** argv) {
 #if (NOISY_TEST == 1)
     printf("\n*** Test Case 5: Test Case: No Cards in the Player's Deck ***\n");
 #endif
-    initializeGame(numPlayers, k, seed, &G);
-    memcpy(&testG, &G, sizeof(struct gameState));
+    initializeGame(numPlayers, k, seed, &G);                //re-initialize the game
+    memcpy(&testG, &G, sizeof(struct gameState));           //copy the gamestate to testG
 
-    currentPlayer = 0;
-    deckcount = testG.deckCount[currentPlayer];
+    currentPlayer = 0;                                      //set current player
+    deckcount = testG.deckCount[currentPlayer];             //store the deckcount of current player
 
-    int newDeck5 [] = {silver, silver};
-    newDeckCount = 2;
-    testG.deckCount[currentPlayer] = newDeckCount;
+    int newDeck5 [] = {silver, silver};                     //create a new deck with only silver
+    newDeckCount = 2;                                       //store size of the new deck
+    testG.deckCount[currentPlayer] = newDeckCount;          //update the current player's deckcount
 
     for(i = 0; i < newDeckCount; i++){
         testG.deck[currentPlayer][i] = newDeck5[i];
@@ -202,6 +202,7 @@ int main(int argc, char** argv) {
     int temp3[] = {};
 
     adventurer_card(0, &testG, 0, 0, temp3);
+
 #if (NOISY_TEST == 1)
     printf("Actual Discard Count: %i \t Expected Discard Count: %i\n", testG.discardCount[currentPlayer], G.discardCount[currentPlayer]);
     printf("Actual Handcount: %i \t Expected Handcount: %i\n", testG.handCount[currentPlayer], G.handCount[currentPlayer] + 2);

@@ -34,6 +34,7 @@ int main(int argc, char** argv){
 
     printf("\n*** Testing whoseTurn() ***\n\n");
 
+
 #if (NOISY_TEST == 1)
     printf("\n*** Testing if Player 1 starts the game ***.\n\n");
 #endif
@@ -70,7 +71,7 @@ int main(int argc, char** argv){
 #if (NOISY_TEST == 1)
     printf("Current Player: %i\n", whoseTurn(&G) + 1);
 #endif
-    endTurn(&G);
+    endTurn(&G);        //end the turn for the player
     assertTrue(whoseTurn(&G) == 1, "Player one's turn did not end properly");    //test if player 1 is the player
 #if (NOISY_TEST == 1)
     printf("Current Player After Ending Turn: %i \t Expected Player: %i\n", whoseTurn(&G) + 1, 2);
@@ -79,21 +80,12 @@ int main(int argc, char** argv){
 #if (NOISY_TEST == 1)
     printf("Current Player: %i\n", whoseTurn(&G) + 1);
 #endif
-    endTurn(&G);
+    endTurn(&G);        //end the turn for the player
     assertTrue(whoseTurn(&G) == 0, "Player one's turn did not end properly");    //test if player 1 is the player
 #if (NOISY_TEST == 1)
     printf("Current Player After Ending Turn: %i \t Expected Player: %i\n", whoseTurn(&G) + 1, 1);
 #endif
 
-
-
-
-
-
-
-
     printf("\n\nAll tests for whoseTurn() passed!\n");
-
-
     return 0;
 }

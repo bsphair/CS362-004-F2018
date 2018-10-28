@@ -39,8 +39,8 @@ int main(int argc, char** argv) {
 
     printf("\n*** Testing village_card() ***\n");
 
-    initializeGame(numPlayers, k, seed, &G);
-    memcpy(&testG, &G, sizeof(struct gameState));
+    initializeGame(numPlayers, k, seed, &G);            //initialize the game
+    memcpy(&testG, &G, sizeof(struct gameState));       //copy gamestate to testG
 
 #if (NOISY_TEST == 1)
     printf("\n*** Test Case 1: ***\n");
@@ -57,11 +57,11 @@ int main(int argc, char** argv) {
         printf("* Increase Handcount by 1 *\n");
         printf("* Increase Actions by 2 *\n");
 #endif
-        deckcount = testG.deckCount[currentPlayer];
+        deckcount = testG.deckCount[currentPlayer];         //store deckcount of current player
 
         village_card(&testG, currentPlayer, handPos);
 
-        handCount = testG.handCount[currentPlayer];
+        handCount = testG.handCount[currentPlayer];         //store handcount of current player
 
 #if (NOISY_TEST == 1)
         printf("Actual Discard Count: %i \t Expected Discard Count: %i\n", testG.discardCount[currentPlayer], G.discardCount[currentPlayer] + a + 1);
@@ -73,9 +73,11 @@ int main(int argc, char** argv) {
         error = assertTF(testG.numActions == G.numActions + (a + 1) * 2, "!!! Test Case 1 Failed: Wrong amount of number of actions !!!");
     }
 
-    memcpy(&testG, &G, sizeof(struct gameState));
+    memcpy(&testG, &G, sizeof(struct gameState));       //copy gamestate to testG
 
 
+
+    //Test adding extra actions
 #if (NOISY_TEST == 1)
     printf("\n\n*** Test Case 2: Testing Extra Actions***\n");
 #endif
@@ -92,11 +94,11 @@ int main(int argc, char** argv) {
     printf("Updated Actions: %i\n\n", testG.numActions);
 #endif
 
-    deckcount = testG.deckCount[currentPlayer];
+    deckcount = testG.deckCount[currentPlayer];     //store deckcount of current player
 
     village_card(&testG, currentPlayer, handPos);
 
-    handCount = testG.handCount[currentPlayer];
+    handCount = testG.handCount[currentPlayer];     //store handcount of current player
 #if (NOISY_TEST == 1)
     printf("Actual Discard Count: %i \t Expected Discard Count: %i\n", testG.discardCount[currentPlayer], G.discardCount[currentPlayer] + 1);
     printf("Actual Handcount: %i \t\t Expected Handcount: %i\n", testG.handCount[currentPlayer], G.handCount[currentPlayer] + 1);
@@ -112,7 +114,7 @@ int main(int argc, char** argv) {
 
     memcpy(&testG, &G, sizeof(struct gameState));
 
-
+    //Test the upper boundary of Actions
 #if (NOISY_TEST == 1)
     printf("\n\n*** Test Case 2: Testing Upper Boundary of Actions***\n");
 #endif
@@ -130,11 +132,11 @@ int main(int argc, char** argv) {
     printf("Updated Actions: %i\n\n", testG.numActions);
 #endif
 
-    deckcount = testG.deckCount[currentPlayer];
+    deckcount = testG.deckCount[currentPlayer];     //store deckcount of current player
 
     village_card(&testG, currentPlayer, handPos);
 
-    handCount = testG.handCount[currentPlayer];
+    handCount = testG.handCount[currentPlayer];     //store handcount of current player
 #if (NOISY_TEST == 1)
     printf("Actual Discard Count: %i \t Expected Discard Count: %i\n", testG.discardCount[currentPlayer], G.discardCount[currentPlayer] + 1);
     printf("Actual Handcount: %i \t\t Expected Handcount: %i\n", testG.handCount[currentPlayer], G.handCount[currentPlayer] + 1);
@@ -143,10 +145,6 @@ int main(int argc, char** argv) {
     error = assertTF(testG.discardCount[currentPlayer] == G.discardCount[currentPlayer] + 1, "!!! Test Case 1 Failed: Wrong amount of discarded cards !!!");
     error = assertTF(testG.handCount[currentPlayer] == G.handCount[currentPlayer] + 1, "!!! Test Case 1 Failed: Wrong amount of cards in hand !!!");
     error = assertTF(testG.numActions == G.numActions + 101, "!!! Test Case 1 Failed: Wrong amount of number of actions !!!");
-
-
-
-
 
 
 
