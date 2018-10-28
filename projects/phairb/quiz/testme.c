@@ -3,17 +3,52 @@
 #include<stdlib.h>
 #include<time.h>
 
+
+/* Author: Brian Phair
+   Description: This function will generate a random number that will return a random array element.
+   References:
+   - https://linux.die.net/man/3/srand
+*/
 char inputChar()
 {
     // TODO: rewrite this function
-    return ' ';
+    srand(time(NULL));                  //set seed
+    int randomNumber = rand() % 9;      //generate random number between 0 and 9
+
+    char array[10] = {'[', '(', '{', ' ', 'a', 'x', '}', ')', ']'};
+
+    return array[randomNumber];
 }
 
+
+/* Author: Brian Phair
+   Description: This function will shuffle an word "reset" randomly and return that word. The function to shuffle the array was inspired from the website listed in References.
+   References: 
+   - https://en.wikipedia.org/wiki/Fisher–Yates_shuffle
+*/
 char *inputString()
 {
     // TODO: rewrite this function
-    return "";
+    srand(time(NULL));      //set seed
+    char *array;
+    array = malloc(sizeof(char)*5);
+    strcat(array, "reset");
+    // char array[] = "reset";
+    // char *array = malloc(sizeof(char) * 5);
+    // array = "reset";
+    int i, randomNumber;
+
+    for(i = 0; i < 3; i++){
+      randomNumber = rand() % 4;
+      char temp = array[i];
+      array[i] = array[randomNumber];
+      array[randomNumber] = temp;
+    }
+    return array;
 }
+
+
+
 
 void testme()
 {
@@ -21,6 +56,7 @@ void testme()
   char *s;
   char c;
   int state = 0;
+
   while (1)
   {
     tcCount++;
