@@ -60,34 +60,42 @@ unittestresults: unittest1 unittest2 unittest3 unittest4 cardtest1 cardtest2 car
 	echo "Results for unittest1: " >> unittestresults.out
 	./unittest1 >>  unittestresults.out
 	gcov dominion.c -b -f >> unittestresults.out
+	cat dominion.c.gcov >> unittestresults.out
 
 	echo "Results for unittest2: " >> unittestresults.out
 	./unittest2 >>  unittestresults.out
 	gcov dominion.c -b -f >> unittestresults.out
+	cat dominion.c.gcov >> unittestresults.out
 
 	echo "Results for unittest3: " >> unittestresults.out
 	./unittest3 >>  unittestresults.out
 	gcov dominion.c -b -f >> unittestresults.out
+	cat dominion.c.gcov >> unittestresults.out
 
 	echo "Results for unittest4: " >> unittestresults.out
 	./unittest4 >>  unittestresults.out
 	gcov dominion.c -b -f >> unittestresults.out
+	cat dominion.c.gcov >> unittestresults.out
 
 	echo "Results for cardtest1: " >> unittestresults.out
 	./cardtest1 >>  unittestresults.out
 	gcov dominion.c -b -f >> unittestresults.out
+	cat dominion.c.gcov >> unittestresults.out
 
 	echo "Results for cardtest2: " >> unittestresults.out
 	./cardtest2 >>  unittestresults.out
 	gcov dominion.c -b -f >> unittestresults.out
+	cat dominion.c.gcov >> unittestresults.out
 
 	echo "Results for cardtest3: " >> unittestresults.out
 	./cardtest3 >>  unittestresults.out
 	gcov dominion.c -b -f >> unittestresults.out
+	cat dominion.c.gcov >> unittestresults.out
 
 	echo "Results for cardtest4: " >> unittestresults.out
 	./cardtest4 >>  unittestresults.out
 	gcov dominion.c -b -f >> unittestresults.out
+	cat dominion.c.gcov >> unittestresults.out
 
 player: player.c interface.o
 	gcc -o player player.c -g  dominion.o rngs.o interface.o $(CFLAGS)
