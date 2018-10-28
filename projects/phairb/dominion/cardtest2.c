@@ -49,14 +49,14 @@ int main(int argc, char** argv) {
     initializeGame(numPlayers, k, seed, &G);
 
 
-#if (NOISY_TEST == 1)
-    printf("\n\n*** Test based on the Treasure cards in hand ***\n");
-#endif
+//#if (NOISY_TEST == 1)
+//    printf("\n\n*** Test based on the Treasure cards in hand ***\n");
+//#endif
 
 
     //Test if the function can find Copper cards
 #if (NOISY_TEST == 1)
-    printf("\n*** Test Case Copper, Copper ***\n");
+    printf("\n*** Test Case 1: Test Case Copper, Copper ***\n");
 #endif
     currentPlayer = 0;
 
@@ -81,11 +81,13 @@ int main(int argc, char** argv) {
     printf("Actual Discard Count: %i \t Expected Discard Count: %i\n", testG.discardCount[currentPlayer], G.discardCount[currentPlayer]);
     printf("Actual Handcount: %i \t Expected Handcount: %i\n", testG.handCount[currentPlayer], G.handCount[currentPlayer] + newCards);
 #endif
+    assertTF(testG.discardCount[currentPlayer] == G.discardCount[currentPlayer], "!!! Test Case 1 Failed: Wrong amount of discarded cards !!!");
+    assertTF(testG.handCount[currentPlayer] == G.handCount[currentPlayer] + newCards, "!!! Test Case 1 Failed: Wrong amount of cards in hand !!!");
 
 
     //Test if the function can find Gold cards
 #if (NOISY_TEST == 1)
-    printf("\n*** Test Case Copper, Gold ***\n");
+    printf("\n*** Test Case 2: Test Case Copper, Gold ***\n");
 #endif
     initializeGame(numPlayers, k, seed, &G);
     memcpy(&testG, &G, sizeof(struct gameState));
@@ -109,15 +111,16 @@ int main(int argc, char** argv) {
     printf("Actual Discard Count: %i \t Expected Discard Count: %i\n", testG.discardCount[currentPlayer], G.discardCount[currentPlayer] + 1);
     printf("Actual Handcount: %i \t Expected Handcount: %i\n", testG.handCount[currentPlayer], G.handCount[currentPlayer] + 2);
 #endif
-    assertTF(testG.handCount[currentPlayer] == G.handCount[currentPlayer] + 2, "!!! Wrong number of cards in the player's hand !!!");
-
+//    assertTF(testG.handCount[currentPlayer] == G.handCount[currentPlayer] + 2, "!!! Wrong number of cards in the player's hand !!!");
+    assertTF(testG.discardCount[currentPlayer] == G.discardCount[currentPlayer] + 1, "!!! Test Case 2 Failed: Wrong amount of discarded cards !!!");
+    assertTF(testG.handCount[currentPlayer] == G.handCount[currentPlayer] + newCards, "!!! Test Case 2 Failed: Wrong amount of cards in hand !!!");
 
 
 
 
     //Test if the player has "junk" cards in the middle of their deck
 #if (NOISY_TEST == 1)
-    printf("\n*** Test Case Copper, NoCard, NoCard, Copper ***\n");
+    printf("\n*** Test Case 3: Test Case Copper, NoCard, NoCard, Copper ***\n");
 #endif
     initializeGame(numPlayers, k, seed, &G);
     memcpy(&testG, &G, sizeof(struct gameState));
@@ -141,12 +144,14 @@ int main(int argc, char** argv) {
     printf("Actual Discard Count: %i \t Expected Discard Count: %i\n", testG.discardCount[currentPlayer], G.discardCount[currentPlayer] + 2);
     printf("Actual Handcount: %i \t Expected Handcount: %i\n", testG.handCount[currentPlayer], G.handCount[currentPlayer] + newCards);
 #endif
+    assertTF(testG.discardCount[currentPlayer] == G.discardCount[currentPlayer] + 2, "!!! Test Case 3 Failed: Wrong amount of discarded cards !!!");
+    assertTF(testG.handCount[currentPlayer] == G.handCount[currentPlayer] + newCards, "!!! Test Case 3 Failed: Wrong amount of cards in hand !!!");
 
 
 
     //Test if the player has no Treasure Cards
 #if (NOISY_TEST == 1)
-    printf("\n*** Test Case: No Cards in the Player's Deck ***\n");
+    printf("\n*** Test Case 4: Test Case: No Cards in the Player's Deck ***\n");
 #endif
     initializeGame(numPlayers, k, seed, &G);
     memcpy(&testG, &G, sizeof(struct gameState));
@@ -169,12 +174,16 @@ int main(int argc, char** argv) {
     printf("Actual Discard Count: %i \t Expected Discard Count: %i\n", testG.discardCount[currentPlayer], G.discardCount[currentPlayer]);
     printf("Actual Handcount: %i \t Expected Handcount: %i\n", testG.handCount[currentPlayer], G.handCount[currentPlayer]);
 #endif
+    assertTF(testG.discardCount[currentPlayer] == G.discardCount[currentPlayer], "!!! Test Case 4 Failed: Wrong amount of discarded cards !!!");
+    assertTF(testG.handCount[currentPlayer] == G.handCount[currentPlayer], "!!! Test Case 4 Failed: Wrong amount of cards in hand !!!");
+
+
 
 
 
     //Test if the player has silver Cards
 #if (NOISY_TEST == 1)
-    printf("\n*** Test Case: No Cards in the Player's Deck ***\n");
+    printf("\n*** Test Case 5: Test Case: No Cards in the Player's Deck ***\n");
 #endif
     initializeGame(numPlayers, k, seed, &G);
     memcpy(&testG, &G, sizeof(struct gameState));
@@ -197,6 +206,8 @@ int main(int argc, char** argv) {
     printf("Actual Discard Count: %i \t Expected Discard Count: %i\n", testG.discardCount[currentPlayer], G.discardCount[currentPlayer]);
     printf("Actual Handcount: %i \t Expected Handcount: %i\n", testG.handCount[currentPlayer], G.handCount[currentPlayer] + 2);
 #endif
+    assertTF(testG.discardCount[currentPlayer] == G.discardCount[currentPlayer], "!!! Test Case 5 Failed: Wrong amount of discarded cards !!!");
+    assertTF(testG.handCount[currentPlayer] == G.handCount[currentPlayer] + newCards, "!!! Test Case 5 Failed: Wrong amount of cards in hand !!!");
 
 
 
