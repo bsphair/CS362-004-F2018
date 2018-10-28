@@ -1183,6 +1183,7 @@ int discardCard(int handPos, int currentPlayer, struct gameState *state, int tra
       //add card to played pile
       state->playedCards[state->playedCardCount] = state->hand[currentPlayer][handPos]; 
       state->playedCardCount++;
+//      printf("PlayedCount = %i\n", state->playedCardCount);
     }
 	
   //set played card to -1
@@ -1208,8 +1209,9 @@ int discardCard(int handPos, int currentPlayer, struct gameState *state, int tra
       //reduce number of cards in hand
       state->handCount[currentPlayer]--;
     }
-	
-  return 0;
+//    printf("PlayedCount = %i\n", state->playedCardCount);
+
+    return 0;
 }
 
 int gainCard(int supplyPos, struct gameState *state, int toFlag, int player)
