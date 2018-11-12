@@ -8,12 +8,26 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <time.h>
 #include <assert.h>
-
+#include <time.h>
 
 // set NOISY_TEST to 0 to remove printfs from output
 #define NOISY_TEST 1
+
+
+
+int assertTF(int condition, char* statement1){
+
+    if(condition != 1){
+#if (NOISY_TEST == 1)
+        printf("\t*** %s ***\n", statement1);
+#endif
+        return 1;
+    }
+    else{
+        return 0;
+    }
+}
 
 
 
@@ -27,8 +41,10 @@ int main () {
     int allowedCards[10] = {adventurer, embargo, village, minion, mine, cutpurse, sea_hag, tribute, smithy, council_room};
 
     struct gameState G;
+    double time_spent = 0.0;
 
     srand(time(NULL));
+    clock_t begin = clock();
 
     //loop for the number of desired tests
     for (i = 0; i < numberOfTests; i++) {
@@ -63,8 +79,10 @@ int main () {
         printf("*** Testing the Great Hall card ***\n");
 #endif
 
+
+
         //Test the hand count
-        if (currHand != startHand) {            //if the current hand count doesn't match the starting hand count
+        if (assertTF(currHand == startHand,"Wrong number of cards drawn")) {            //if the current hand count doesn't match the starting hand count
 #if (NOISY_TEST == 1)
             printf("\tCards drawn - Fail\n");
 #endif
@@ -78,8 +96,11 @@ int main () {
         }
 
 
+
+
+
         //Test the number of actions
-        if (currNumActions != startNumActions + 1) {    //if the number of actions is incorrect
+        if (assertTF(currNumActions == (startNumActions + 1), "Wrong number of actions")) {    //if the number of actions is incorrect
 #if (NOISY_TEST == 1)
             printf("\tActions - Fail\n");
 #endif
@@ -94,21 +115,26 @@ int main () {
 
 
 
+        //if all the tests have passed, print out message
         if (passedAllTestsFlag == 1) {
 #if (NOISY_TEST == 1)
             printf("\tAll tests passed!\n\n");
 #endif
-            numTestsPassed++;
+            numTestsPassed++;       //add to the number of tests passed
         }
 
     }
 
+
+    clock_t end = clock();                                  //get time
+    time_spent += (double)(end - begin) / CLOCKS_PER_SEC;   //calculate the run time of the tests
 
     printf("Great Hall tests summary:\n");
     printf("\tPassed: %d\n", numTestsPassed);
     printf("\tFailed (hand): %d\n", failedHandCount);
     printf("\tFailed (actions): %d\n\n", failedActionsCount);
 
+    printf("Time elapsed is %f seconds", time_spent);
 
 
     return 0;

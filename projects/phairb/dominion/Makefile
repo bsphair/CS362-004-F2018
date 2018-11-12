@@ -43,15 +43,15 @@ randomcard2: randomtestcard2.c dominion.o rngs.o
 
 
 testresults: testadventurer randomcard1 randomcard2
-	echo "Results for randomtestadventurer: " >> testresults.out
-	./randomtestadventurer >>  testresults.out
-	gcov dominion.c -b -f >> testresults.out
-	cat dominion.c.gcov >> testresults.out
+	#echo "Results for randomtestadventurer: " >> testresults.out
+	#./randomtestadventurer >>  testresults.out
+	#gcov dominion.c -b -f >> testresults.out
+	#cat dominion.c.gcov >> testresults.out
 
-	echo "Results for randomtestcard1: " >> testresults.out
-	./randomtestcard1 >>  testresults.out
-	gcov dominion.c -b -f >> testresults.out
-	cat dominion.c.gcov >> testresults.out
+	#echo "Results for randomtestcard1: " >> testresults.out
+	#./randomtestcard1 >>  testresults.out
+	#gcov dominion.c -b -f >> testresults.out
+	#cat dominion.c.gcov >> testresults.out
 
 	echo "Results for randomtestcard2: " >> testresults.out
 	./randomtestcard2 >>  testresults.out

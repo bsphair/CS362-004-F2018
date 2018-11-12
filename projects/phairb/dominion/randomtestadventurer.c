@@ -1,6 +1,6 @@
 /* Author: Brian Phair
  * Description: Tests the great hall card in dominion.c
- * */
+ */
 
 #include "dominion.h"
 #include "dominion_helpers.h"
@@ -15,6 +15,19 @@
 #define NOISY_TEST 1
 
 
+int assertTF(int condition, char* statement1){
+
+    if(condition != 1){
+#if (NOISY_TEST == 1)
+        printf("\t*** %s ***\n", statement1);
+#endif
+        return 1;
+    }
+    else{
+        return 0;
+    }
+}
+
 int main () {
     int numTestsPassed = 0, passedAllTestsFlag = 0, testDraw = 0, failedDiscard = 0, beforeCoins = 0, afterCoins = 0;
     int choice1 = 0, choice2 = 0, choice3 = 0, handPos = 0, bonus = 0;
@@ -25,10 +38,13 @@ int main () {
     int i, j, k;
     int allowedCards[10] = {adventurer, embargo, village, minion, mine, cutpurse, sea_hag, tribute, smithy, council_room};
 
+    double time_spent = 0.0;
+
     struct gameState G;
 
 
     srand(time(NULL));
+    clock_t begin = clock();        //start recording time
 
 
     //loop for number of desired tests
@@ -111,73 +127,87 @@ int main () {
         printf("*** Testing Adventurer card ***\n");
 #endif
 
-        if (afterCoins != (beforeCoins + 2)) {
+
+        //test for the correct number of cards drawn
+        if(assertTF(afterCoins == (beforeCoins + 2), "Wrong number of cards Drawn test")){  //if test failed
 #if (NOISY_TEST == 1)
             printf("\tCards drawn - Fail\n");
 #endif
             testDraw++;
             passedAllTestsFlag = 0;
         }
-        else {
+        else {                  //test passed
 #if (NOISY_TEST == 1)
             printf("\tCards drawn - Pass\n");
 #endif
         }
 
-        if (afterCoins < beforeCoins) {
+
+
+
+        //test for the correct count of cards
+        if (afterCoins < beforeCoins) {         //test failed
 #if (NOISY_TEST == 1)
             printf("\tCards count - Fail\n");
 #endif
             testDraw++;
             passedAllTestsFlag = 0;
         }
-        else {
+        else {                                 //test passed
 #if (NOISY_TEST == 1)
             printf("\tCards count - Pass\n");
 #endif
         }
 
 
-        if (trGold != 0) {
+
+        //test for the correct number of gold
+        if (assertTF(trGold == 0, "Wrong number of gold")) {        //wrong amount of gold, test failed
 #if (NOISY_TEST == 1)
             printf("\tGold - Fail\n");
 #endif
             failedDiscard++;
             passedAllTestsFlag = 0;
         }
-        else {
+        else {          //correct amount of gold, test passed
 #if (NOISY_TEST == 1)
             printf("\tGold - Pass\n");
 #endif
         }
 
-        if (trSilver != 0) {
+
+
+        //test for the correct number of silver
+        if (assertTF(trSilver == 0, "Wrong number of silver")) {    //wrong amount of silver, test failed
 #if (NOISY_TEST == 1)
             printf("\tSilver - Fail\n");
 #endif
             failedDiscard++;
             passedAllTestsFlag = 0;
         }
-        else {
+        else {              //correct amount of silver, test passed
 #if (NOISY_TEST == 1)
             printf("\tSilver - Pass\n");
 #endif
         }
 
-        if (trCopper != 0) {
+
+        //test for the correct number of copper
+        if (assertTF(trCopper == 0, "Wrong number of copper")) {    //wrong amount of copper, test failed
 #if (NOISY_TEST == 1)
             printf("\tCopper - Fail\n");
 #endif
             failedDiscard++;
             passedAllTestsFlag = 0;
         }
-        else {
+        else {                  //correct amount of copper, test passed
 #if (NOISY_TEST == 1)
             printf("\tCopper - Pass\n");
 #endif
         }
 
 
+        //if all test have passed, print out message saying informing user all tests have passed
         if (passedAllTestsFlag == 1) {
 #if (NOISY_TEST == 1)
             printf("\tAll tests passed!\n\n");
@@ -187,11 +217,15 @@ int main () {
 
     }
 
+    clock_t end = clock();      //end time recording
+    time_spent += (double)(end - begin) / CLOCKS_PER_SEC;   //calculate time spent
+
     printf("Adventurer tests summary:\n");
     printf("\tPassed: %d\n", numTestsPassed);
     printf("\tFailed (draw): %d\n", testDraw);
     printf("\tFailed (discard): %d\n\n", failedDiscard);
 
+    printf("Time elapsed is %f seconds", time_spent);
 
 
     return 0;
