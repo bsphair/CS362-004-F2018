@@ -1,5 +1,5 @@
 /* Author: Brian Phair
- * Description: Tests the great hall card in dominion.c
+ * Description: Tests the adventurer card in dominion.c
  */
 
 #include "dominion.h"
@@ -37,16 +37,11 @@ int main () {
     int seed = 1000;
     int i, j, k;
     int allowedCards[10] = {adventurer, embargo, village, minion, mine, cutpurse, sea_hag, tribute, smithy, council_room};
-
-
-
-
     double time_spent = 0.0;
-
     struct gameState G;
 
 
-    srand(time(NULL));
+    srand(time(NULL));              //for random seeding
     clock_t begin = clock();        //start recording time
 
 
@@ -62,8 +57,8 @@ int main () {
         G.deckCount[0] = deckSize - handSize;
         G.handCount[0] = handSize;
 
-        beforeCoins = 0;
-        afterCoins = 0;
+        beforeCoins = 0;        //reset to zero
+        afterCoins = 0;         //reset to zero
 
 
         //Place random cards in each player's deck

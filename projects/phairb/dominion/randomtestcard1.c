@@ -46,8 +46,8 @@ int main () {
     struct gameState G;
     double time_spent = 0.0;
 
-    srand(time(NULL));
-    clock_t begin = clock();
+    srand(time(NULL));          //for random seeding
+    clock_t begin = clock();    //start recording time
 
 
     //loop for number of tests
