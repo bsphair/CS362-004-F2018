@@ -43,20 +43,20 @@ randomcard2: randomtestcard2.c dominion.o rngs.o
 
 
 testresults: testadventurer randomcard1 randomcard2
-	#echo "Results for randomtestadventurer: " >> testresults.out
-	#./randomtestadventurer >>  testresults.out
-	#gcov dominion.c -b -f >> testresults.out
-	#cat dominion.c.gcov >> testresults.out
+	echo "Results for randomtestadventurer: " >> randomtestadventurer.out
+	./randomtestadventurer >>  randomtestadventurer.out
+	gcov dominion.c -b -f >> randomtestadventurer.out
+	cat dominion.c.gcov >> randomtestadventurer.out
 
-	#echo "Results for randomtestcard1: " >> testresults.out
-	#./randomtestcard1 >>  testresults.out
-	#gcov dominion.c -b -f >> testresults.out
-	#cat dominion.c.gcov >> testresults.out
+	echo "Results for randomtestcard1: " >> randomtestcard1.out
+	./randomtestcard1 >>  randomtestcard1.out
+	gcov dominion.c -b -f >> randomtestcard1.out
+	cat dominion.c.gcov >> randomtestcard1.out
 
-	echo "Results for randomtestcard2: " >> testresults.out
-	./randomtestcard2 >>  testresults.out
-	gcov dominion.c -b -f >> testresults.out
-	cat dominion.c.gcov >> testresults.out
+	echo "Results for randomtestcard2: " >> randomtestcard2.out
+	./randomtestcard2 >>  randomtestcard2.out
+	gcov dominion.c -b -f >> randomtestcard2.out
+	cat dominion.c.gcov >> randomtestcard2.out
 
 player: player.c interface.o
 	gcc -o player player.c -g  dominion.o rngs.o interface.o $(CFLAGS)

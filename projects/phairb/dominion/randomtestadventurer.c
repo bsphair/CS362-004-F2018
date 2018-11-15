@@ -38,6 +38,9 @@ int main () {
     int i, j, k;
     int allowedCards[10] = {adventurer, embargo, village, minion, mine, cutpurse, sea_hag, tribute, smithy, council_room};
 
+
+
+
     double time_spent = 0.0;
 
     struct gameState G;
