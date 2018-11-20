@@ -74,62 +74,62 @@ randomcard2: randomtestcard2.c dominion.o rngs.o
 	gcc -o randomtestcard2 -g randomtestcard2.c dominion.o rngs.o $(CFLAGS)
 
 
-unittestresults: cardtest2 #cardtest3 cardtest4 testadventurer randomcard1 randomcard2
+unittestresults: unittest1 unittest2 unittest3 unittest4 cardtest1 cardtest2 cardtest3 cardtest4 testadventurer randomcard1 randomcard2
 
-	#echo "Results for unittest1: " >> unittestresults.out
-	#./unittest1 >>  unittestresults.out
-	#gcov dominion.c -b -f >> unittestresults.out
-	#cat dominion.c.gcov >> unittestresults.out
+	echo "Results for unittest1: " >> unittestresults.out
+	./unittest1 >>  unittestresults.out
+	gcov dominion.c -b -f >> unittestresults.out
+	cat dominion.c.gcov >> unittestresults.out
 
-	#echo "Results for unittest2: " >> unittestresults.out
-	#./unittest2 >>  unittestresults.out
-	#gcov dominion.c -b -f >> unittestresults.out
-	#cat dominion.c.gcov >> unittestresults.out
+	echo "Results for unittest2: " >> unittestresults.out
+	./unittest2 >>  unittestresults.out
+	gcov dominion.c -b -f >> unittestresults.out
+	cat dominion.c.gcov >> unittestresults.out
 
-	#echo "Results for unittest3: " >> unittestresults.out
-	#./unittest3 >>  unittestresults.out
-	#gcov dominion.c -b -f >> unittestresults.out
-	#cat dominion.c.gcov >> unittestresults.out
+	echo "Results for unittest3: " >> unittestresults.out
+	./unittest3 >>  unittestresults.out
+	gcov dominion.c -b -f >> unittestresults.out
+	cat dominion.c.gcov >> unittestresults.out
 
-	#echo "Results for unittest4: " >> unittestresults.out
-	#./unittest4 >>  unittestresults.out
-	#gcov dominion.c -b -f >> unittestresults.out
-	#cat dominion.c.gcov >> unittestresults.out
+	echo "Results for unittest4: " >> unittestresults.out
+	./unittest4 >>  unittestresults.out
+	gcov dominion.c -b -f >> unittestresults.out
+	cat dominion.c.gcov >> unittestresults.out
 
-	#echo "Results for cardtest1: " >> unittestresults.out
-	#./cardtest1 >>  unittestresults.out
-	#gcov dominion.c -b -f >> unittestresults.out
-	#cat dominion.c.gcov >> unittestresults.out
+	echo "Results for cardtest1: " >> unittestresults.out
+	./cardtest1 >>  unittestresults.out
+	gcov dominion.c -b -f >> unittestresults.out
+	cat dominion.c.gcov >> unittestresults.out
 
 	echo "Results for cardtest2: " >> unittestresults.out
 	./cardtest2 >>  unittestresults.out
-	#gcov dominion.c -b -f >> unittestresults.out
-	#cat dominion.c.gcov >> unittestresults.out
+	gcov dominion.c -b -f >> unittestresults.out
+	cat dominion.c.gcov >> unittestresults.out
 
-	#echo "Results for cardtest3: " >> unittestresults.out
-	#./cardtest3 >>  unittestresults.out
-	#gcov dominion.c -b -f >> unittestresults.out
-	#cat dominion.c.gcov >> unittestresults.out
+	echo "Results for cardtest3: " >> unittestresults.out
+	./cardtest3 >>  unittestresults.out
+	gcov dominion.c -b -f >> unittestresults.out
+	cat dominion.c.gcov >> unittestresults.out
 
-	#echo "Results for cardtest4: " >> unittestresults.out
-	#./cardtest4 >>  unittestresults.out
-	#gcov dominion.c -b -f >> unittestresults.out
-	#cat dominion.c.gcov >> unittestresults.out
+	echo "Results for cardtest4: " >> unittestresults.out
+	./cardtest4 >>  unittestresults.out
+	gcov dominion.c -b -f >> unittestresults.out
+	cat dominion.c.gcov >> unittestresults.out
 
-	#echo "Results for randomtestadventurer: " >> randomtestadventurer.out
-	#./randomtestadventurer >>  randomtestadventurer.out
-	#gcov dominion.c -b -f >> randomtestadventurer.out
-	#cat dominion.c.gcov >> randomtestadventurer.out
+	echo "Results for randomtestadventurer: " >> randomtestadventurer.out
+	./randomtestadventurer >>  randomtestadventurer.out
+	gcov dominion.c -b -f >> randomtestadventurer.out
+	cat dominion.c.gcov >> randomtestadventurer.out
 
-	#echo "Results for randomtestcard1: " >> randomtestcard1.out
-	#./randomtestcard1 >>  randomtestcard1.out
-	#gcov dominion.c -b -f >> randomtestcard1.out
-	#cat dominion.c.gcov >> randomtestcard1.out
+	echo "Results for randomtestcard1: " >> randomtestcard1.out
+	./randomtestcard1 >>  randomtestcard1.out
+	gcov dominion.c -b -f >> randomtestcard1.out
+	cat dominion.c.gcov >> randomtestcard1.out
 
-	#echo "Results for randomtestcard2: " >> randomtestcard2.out
-	#./randomtestcard2 >>  randomtestcard2.out
-	#gcov dominion.c -b -f >> randomtestcard2.out
-	#cat dominion.c.gcov >> randomtestcard2.out
+	echo "Results for randomtestcard2: " >> randomtestcard2.out
+	./randomtestcard2 >>  randomtestcard2.out
+	gcov dominion.c -b -f >> randomtestcard2.out
+	cat dominion.c.gcov >> randomtestcard2.out
 
 
 player: player.c interface.o

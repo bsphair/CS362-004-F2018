@@ -1,3 +1,7 @@
+/* Author: Brian Phair
+ * Description: Tests cases for "Adventurer" card located in dominion.c
+ */
+
 #include "dominion.h"
 #include "dominion_helpers.h"
 #include "interface.h"
@@ -37,12 +41,7 @@ int main(int argc, char** argv) {
     int newDeckCount;
     int error = 0;
     int handCount;
-//    int alltests = 0;
     int newCards = 2;
-//    int played = 1;
-//    int treasureCount = 0;
-//    int treasureCards = 0;
-//    int treasureCards2 = 0;
     int a;
     int handpos = 0, choice1 = 0, choice2 = 0, choice3 = 0, bonus = 0;
     int seed = 1000;

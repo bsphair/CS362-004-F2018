@@ -1,3 +1,7 @@
+/* Author: Brian Phair
+ * Description: Tests cases for "Great Hall" card located in dominion.c
+ */
+
 #include "dominion.h"
 #include "dominion_helpers.h"
 #include "interface.h"
@@ -27,7 +31,7 @@ int main(int argc, char** argv) {
     int error = 0;
     int handCount;
     int deckcount;
-    int handPos = 0;
+    int handpos = 0, choice1 = 0, choice2 = 0, choice3 = 0, bonus = 0;
     int a;
     int seed = 1000;
     int numPlayers = 2;
@@ -62,7 +66,7 @@ int main(int argc, char** argv) {
 #endif
         deckcount = testG.deckCount[currentPlayer];         //store deckcount of current player
 
-        greathall_card(&testG, currentPlayer, handPos);
+        cardEffect(great_hall, choice1, choice2, choice3, &testG, handpos, &bonus); //play great_hall card
 
         handCount = testG.handCount[currentPlayer];         //store handcount of current player
 
@@ -105,7 +109,7 @@ int main(int argc, char** argv) {
 
     deckcount = testG.deckCount[currentPlayer];     //store deckcount of current player
 
-    greathall_card(&testG, currentPlayer, handPos);
+    cardEffect(great_hall, choice1, choice2, choice3, &testG, handpos, &bonus); //play great_hall card
 
     handCount = testG.handCount[currentPlayer];      //store handcount of current player
 
@@ -145,7 +149,7 @@ int main(int argc, char** argv) {
 
     deckcount = testG.deckCount[currentPlayer];     //store deckcount of current player
 
-    greathall_card(&testG, currentPlayer, handPos);
+    cardEffect(great_hall, choice1, choice2, choice3, &testG, handpos, &bonus); //play great_hall card
 
     handCount = testG.handCount[currentPlayer];     //store handcount of current player
 

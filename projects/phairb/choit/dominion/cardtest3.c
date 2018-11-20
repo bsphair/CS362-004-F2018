@@ -1,3 +1,7 @@
+/* Author: Brian Phair
+ * Description: Tests cases for "Village" card located in dominion.c
+ */
+
 #include "dominion.h"
 #include "dominion_helpers.h"
 #include "interface.h"
@@ -20,14 +24,21 @@ int assertTF(int condition, char* statement){
     return 0;
 }
 
-
+void printPassedOrFailed(int error){
+    if(error == 0){
+        printf("Passed: ");
+    }
+    else{
+        printf("Failed: ");
+    }
+}
 
 
 int main(int argc, char** argv) {
     int error = 0;
     int handCount;
     int deckcount;
-    int handPos = 0;
+    int handpos = 0, choice1 = 0, choice2 = 0, choice3 = 0, bonus = 0;
     int a;
     int seed = 1000;
     int numPlayers = 2;
@@ -39,13 +50,14 @@ int main(int argc, char** argv) {
 
     printf("\n*** Testing village_card() ***\n");
 
+
+
+
     initializeGame(numPlayers, k, seed, &G);            //initialize the game
     memcpy(&testG, &G, sizeof(struct gameState));       //copy gamestate to testG
 
 #if (NOISY_TEST == 1)
     printf("\n*** Test Case 1: ***\n");
-
-
     printf("Original Discard Count: %i\n", testG.discardCount[currentPlayer]);
     printf("Original Handcount: %i\n", testG.handCount[currentPlayer]);
     printf("Original Actions: %i\n", testG.numActions);
@@ -59,7 +71,7 @@ int main(int argc, char** argv) {
 #endif
         deckcount = testG.deckCount[currentPlayer];         //store deckcount of current player
 
-        village_card(&testG, currentPlayer, handPos);
+        cardEffect(village, choice1, choice2, choice3, &testG, handpos, &bonus); //play village card
 
         handCount = testG.handCount[currentPlayer];         //store handcount of current player
 
@@ -74,6 +86,9 @@ int main(int argc, char** argv) {
     }
 
     memcpy(&testG, &G, sizeof(struct gameState));       //copy gamestate to testG
+
+
+
 
 
 
@@ -96,7 +111,7 @@ int main(int argc, char** argv) {
 
     deckcount = testG.deckCount[currentPlayer];     //store deckcount of current player
 
-    village_card(&testG, currentPlayer, handPos);
+    cardEffect(village, choice1, choice2, choice3, &testG, handpos, &bonus); //play village card
 
     handCount = testG.handCount[currentPlayer];     //store handcount of current player
 #if (NOISY_TEST == 1)
@@ -134,7 +149,7 @@ int main(int argc, char** argv) {
 
     deckcount = testG.deckCount[currentPlayer];     //store deckcount of current player
 
-    village_card(&testG, currentPlayer, handPos);
+    cardEffect(village, choice1, choice2, choice3, &testG, handpos, &bonus); //play village card
 
     handCount = testG.handCount[currentPlayer];     //store handcount of current player
 #if (NOISY_TEST == 1)
