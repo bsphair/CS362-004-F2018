@@ -41,7 +41,13 @@ public class UrlValidatorTest extends TestCase {
 //      assertFalse(newUrl.isValid("https://www.google.com/search?as_oq=\"cat%20kittens\"&num=100"));
 //      assertFalse(newUrl.isValid("https://www.google.com/search?as_oq=\"cat%20kittens\"&num=1000"));
 //      assertFalse(newUrl.isValid("https://www.google.com/search?as_oq=\"cat%20kittens\"&num=-1"));
-      assertFalse(newUrl.isValid("https://www.google.com/search?as_oq=\"cat%20kittens\"&num=.5"));
+//      assertFalse(newUrl.isValid("https://www.google.com/search?as_oq=\"cat%20kittens\"&num=.5"));
+
+//      assertFalse(newUrl.isValid("https://www.google.com/search?as_oq=%22cat%20kittens%22&as_filetype="));
+//      assertFalse(newUrl.isValid("https://www.google.com/search?as_oq=%22cat%20kittens%22&as_filetype=txt"));
+//      assertFalse(newUrl.isValid("https://www.google.com/search?as_oq=%22cat%20kittens%22&as_filetype=text"));
+//      assertFalse(newUrl.isValid("https://www.google.com/search?as_oq=%22cat%20kittens%22&as_filetype=pdf"));
+
 
 
    }
