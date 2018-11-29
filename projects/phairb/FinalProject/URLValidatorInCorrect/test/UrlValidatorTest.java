@@ -1,38 +1,18 @@
 
-
 import junit.framework.TestCase;
 
 //You can use this as a skeleton for your 3 different test approach
 //It is an optional to use this file, you can generate your own test file(s) to test the target function!
 // Again, it is up to you to use this file or not!
 
-
-
-
 public class UrlValidatorTest extends TestCase {
-
 
    public UrlValidatorTest(String testName) {
       super(testName);
    }
 
-
-   public void assertTF(String statement, boolean boolOne, boolean boolTwo){
-      String errorMessage = null;
-
-      try {
-         if (boolOne == boolTwo) {
-            System.out.println("PASSSED: VALID URL PROTOCOL");
-         }
-      }
-      catch (Error e){
-         System.out.println("FAILED: BUG FOUND");
-      }
-   }
-
-   public void testManualTest()
-   {
-// You can use this function to implement your manual testing
+   public void testManualTest() {
+      // You can use this function to implement your manual testing
       UrlValidator newUrl = new UrlValidator(null, null, UrlValidator.ALLOW_ALL_SCHEMES);
 
       System.out.println("\n----------------- TESTING VALID URL PROTOCOL ----------------");
@@ -162,12 +142,10 @@ public class UrlValidatorTest extends TestCase {
       }
 
       System.out.println("\n\n----------- FINISHED TESTING INVALID URL PROTOCOL -----------");
-
    }
 
-
-   public void testYourFirstPartition(){
-// You can use this function to implement your First Partition testing
+   public void testYourFirstPartition() {
+      // You can use this function to implement your First Partition testing
       // URI = scheme:[//authority]path[?query][#fragment]
 
       // First Partition Test 1 - Valid Scheme
@@ -221,11 +199,9 @@ public class UrlValidatorTest extends TestCase {
       }
 
       System.out.println("-------------- FINISHED TESTING INVALID SCHEME --------------");
-
-
    }
 
-   public void testYourSecondPartition(){
+   public void testYourSecondPartition() {
       // You can use this function to implement your Second Partition testing
       // URI = scheme:[//authority]path[?query][#fragment]
 
@@ -280,8 +256,7 @@ public class UrlValidatorTest extends TestCase {
 
       System.out.println("------------ FINISHED TESTING INVALID AUTHORITY -------------");
    }
-   //You need to create more test cases for your Partitions if you need to
-
+   // You need to create more test cases for your Partitions if you need to
 
    public void testYourThirdPartition() {
       // You can use this function to implement your Third Partition testing
@@ -456,7 +431,7 @@ public class UrlValidatorTest extends TestCase {
       // Sizth Partition Test 1 - Valid Port
       System.out.println("\n\n--------------------- TESTING VALID PORT --------------------\n");
 
-      String[] testValidPort = {":80", ":65535", ":0", ""};
+      String[] testValidPort = { ":80", ":65535", ":0", "" };
       UrlValidator newValidPort = new UrlValidator(testValidPort, 0);
       for (int i = 0; i < testValidPort.length; i++) {
          String currentPort = testValidPort[i];
@@ -466,7 +441,9 @@ public class UrlValidatorTest extends TestCase {
 
             if (validPath == true) {
                System.out.println("PASSED: VALID PORT\n");
-            } else {
+            }
+
+            else {
                System.out.println("FAILED: INVALID PORT\n");
             }
          } catch (Error e) {
@@ -479,7 +456,7 @@ public class UrlValidatorTest extends TestCase {
       // Sizth Partition Test 2 - Invalid Port
       System.out.println("\n\n-------------------- TESTING INVALID PORT -------------------\n");
 
-      String[] testInvalidPort = {":-1", ":65636", ":65a"};
+      String[] testInvalidPort = { ":-1", ":65636", ":65a" };
       UrlValidator newInvalidPort = new UrlValidator(testInvalidPort, 0);
       for (int i = 0; i < testInvalidPort.length; i++) {
          String currentPort = testInvalidPort[i];
@@ -489,7 +466,9 @@ public class UrlValidatorTest extends TestCase {
 
             if (validPath == false) {
                System.out.println("PASSED: INVALID PORT\n");
-            } else {
+            }
+
+            else {
                System.out.println("FAILED: VALID PORT\n");
             }
          } catch (Error e) {
@@ -498,12 +477,11 @@ public class UrlValidatorTest extends TestCase {
       }
 
       System.out.println("--------------- FINISHED TESTING INVALID PORT ---------------");
+
    }
 
-
-      public void testIsValid()
-   {
-// You can use this function for programming based testing
+   public void testIsValid() {
+      // You can use this function for programming based testing
       System.out.println("\n\n--------------------- TESTING VALID URL ---------------------\n");
 
       int numTests = 10;
@@ -521,10 +499,10 @@ public class UrlValidatorTest extends TestCase {
          int randPath = (int) (Math.random() * 6);
 
          String[] testValidQuery = { "?action=view", "?action=edit&mode=up", "", "search?q=%s", "?hl=en-US" };
-         int radnQuery = (int) (Math.random() * 5);
+         int radnQuery = 2; //(int) (Math.random() * 5);
 
          String[] testValidPort = { ":80", ":65535", ":0", "" };
-         int randPort = (int) (Math.random() * 4);
+         int randPort = 3;// (int) (Math.random() * 4);
 
          String currentUrl = testValidScheme[randScheme] + testValidAuthority[randAuthority] + testValidPort[randPort]
                  + testValidPath[randPath] + testValidQuery[radnQuery];
@@ -533,7 +511,9 @@ public class UrlValidatorTest extends TestCase {
 
          UrlValidator newValidUrl = new UrlValidator();
          try {
-            boolean validUrl = newValidUrl.isValid(currentUrl);
+            boolean validUrl = newValidUrl.isValid("http://255.com/t123");
+
+            System.out.println(validUrl);
 
             if (validUrl == true) {
                System.out.println("PASSED: VALID URL INPUT\n");
@@ -550,19 +530,106 @@ public class UrlValidatorTest extends TestCase {
       System.out.println("---------------- FINISHED TESTING VALID URL -----------------");
    }
 
-
    // TODO: CHOOSE 2 FROM THE BOTTOM AND IMPLEMENT
 
    // TODO: Implement Unit Test for Valid Scheme
    public void testIsValidSchemeUnitTest() {
       // Unit test for testing valid Scheme
+      // You can use this function for programming based testing
+      System.out.println("\n\n--------------------- TESTING VALID SCHEME UNIT TEST ---------------------\n");
 
+      String[] testValidScheme = { "http://", "ftp://", "h3t://", "" };
+
+      for (int i = 0; i < testValidScheme.length; i++) {
+
+         String[] testValidAuthority = { "www.google.com", "go.com", "go.au", "0.0.0.0", "255.255.255.255",
+                 "255.com" };
+         int randAuthority = (int) (Math.random() * 6);
+
+         String[] testValidPath = { "/test1", "/t123", "/$23", "/test1/", "", "/test1/file" };
+         int randPath = (int) (Math.random() * 6);
+
+         String[] testValidQuery = { "?action=view", "?action=edit&mode=up", "", "search?q=%s", "?hl=en-US" };
+         int radnQuery = 2; //(int) (Math.random() * 5);
+
+         String[] testValidPort = { ":80", ":65535", ":0", "" };
+         int randPort = 3;// (int) (Math.random() * 4);
+
+         String currentUrl = testValidScheme[i] + testValidAuthority[randAuthority] + testValidPort[randPort]
+                 + testValidPath[randPath] + testValidQuery[radnQuery];
+
+         System.out.format("TEST %d: \"%s\"\n", (i + 1), currentUrl);
+
+         UrlValidator newValidUrl = new UrlValidator();
+         try {
+            boolean validUrl = newValidUrl.isValid("http://255.com/t123");
+
+            System.out.println(validUrl);
+
+            if (validUrl == true) {
+               System.out.println("PASSED: VALID URL INPUT\n");
+            }
+
+            else {
+               System.out.println("FAILED: INVALID URL INPUT\n");
+            }
+         } catch (Error e) {
+            System.out.println("FAILED: BUG FOUND\n");
+         }
+      }
+
+      System.out.println("---------------- FINISHED TESTING VALID SCHEME UNIT TEST -----------------");
    }
 
    // TODO: Implement Unit Test for Valid Authority
    public void testIsValidAuthorityUnitTest() {
       // Unit test for testing valid Authority
+      // You can use this function for programming based testing
+      System.out.println("\n\n--------------------- TESTING VALID AUTHORITY UNIT TEST ---------------------\n");
 
+      String[] testValidAuthority = { "www.google.com", "go.com", "go.au", "0.0.0.0", "255.255.255.255",
+              "255.com" };
+
+      for (int i = 0; i < testValidAuthority.length; i++) {
+
+         String[] testValidScheme = { "http://", "ftp://", "h3t://", "" };
+         int randScheme = (int) (Math.random() * 4);
+
+         int randAuthority = (int) (Math.random() * 6);
+
+         String[] testValidPath = { "/test1", "/t123", "/$23", "/test1/", "", "/test1/file" };
+         int randPath = (int) (Math.random() * 6);
+
+         String[] testValidQuery = { "?action=view", "?action=edit&mode=up", "", "search?q=%s", "?hl=en-US" };
+         int radnQuery = 2; //(int) (Math.random() * 5);
+
+         String[] testValidPort = { ":80", ":65535", ":0", "" };
+         int randPort = 3;// (int) (Math.random() * 4);
+
+         String currentUrl = testValidScheme[randScheme] + testValidAuthority[i] + testValidPort[randPort]
+                 + testValidPath[randPath] + testValidQuery[radnQuery];
+
+         System.out.format("TEST %d: \"%s\"\n", (i + 1), currentUrl);
+
+         UrlValidator newValidUrl = new UrlValidator();
+         try {
+            boolean validUrl = newValidUrl.isValid("http://255.com/t123");
+
+            System.out.println(validUrl);
+
+            if (validUrl == true) {
+               System.out.println("PASSED: VALID URL INPUT\n");
+            }
+
+            else {
+               System.out.println("FAILED: INVALID URL INPUT\n");
+            }
+         } catch (Error e) {
+            System.out.println("FAILED: BUG FOUND\n");
+         }
+      }
+
+      System.out.println("---------------- FINISHED TESTING VALID AUTHORITY UNIT TEST -----------------");
    }
 
    // TODO: Implement Unit Test for Valid Path
@@ -577,5 +644,16 @@ public class UrlValidatorTest extends TestCase {
 
    }
 
+   // TODO: Implement Unit Test for Valid Query
+   public void testIsValidQueryUnitTest() {
+      // Unit test for testing valid Query
+
+   }
+
+   // TODO: Implement Unit Test for Valid Port
+   public void testIsValidPortUnitTest() {
+      // Unit test for testing valid Port
+
+   }
 
 }
