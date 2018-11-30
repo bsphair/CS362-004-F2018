@@ -536,7 +536,7 @@ public class UrlValidatorTest extends TestCase {
    public void testIsValidSchemeUnitTest() {
       // Unit test for testing valid Scheme
       // You can use this function for programming based testing
-      System.out.println("\n\n--------------------- TESTING VALID SCHEME UNIT TEST ---------------------\n");
+      System.out.println("\n\n-------------- TESTING VALID SCHEME UNIT TEST ---------------\n");
 
       String[] testValidScheme = { "http://", "ftp://", "h3t://", "" };
 
@@ -578,14 +578,14 @@ public class UrlValidatorTest extends TestCase {
          }
       }
 
-      System.out.println("---------------- FINISHED TESTING VALID SCHEME UNIT TEST -----------------");
+      System.out.println("---------- FINISHED TESTING VALID SCHEME UNIT TEST ----------");
    }
 
    // TODO: Implement Unit Test for Valid Authority
    public void testIsValidAuthorityUnitTest() {
       // Unit test for testing valid Authority
       // You can use this function for programming based testing
-      System.out.println("\n\n--------------------- TESTING VALID AUTHORITY UNIT TEST ---------------------\n");
+      System.out.println("\n\n------------- TESTING VALID AUTHORITY UNIT TEST -------------\n");
 
       String[] testValidAuthority = { "www.google.com", "go.com", "go.au", "0.0.0.0", "255.255.255.255",
               "255.com" };
@@ -629,31 +629,6 @@ public class UrlValidatorTest extends TestCase {
          }
       }
 
-      System.out.println("---------------- FINISHED TESTING VALID AUTHORITY UNIT TEST -----------------");
+      System.out.println("--------- FINISHED TESTING VALID AUTHORITY UNIT TEST --------");
    }
-
-   // TODO: Implement Unit Test for Valid Path
-   public void testIsValidPathUnitTest() {
-      // Unit test for testing valid Path
-
-   }
-
-   // TODO: Implement Unit Test for Valid Options
-   public void testIsValidPathOptionsUnitTest() {
-      // Unit test for testing valid Path Options
-
-   }
-
-   // TODO: Implement Unit Test for Valid Query
-   public void testIsValidQueryUnitTest() {
-      // Unit test for testing valid Query
-
-   }
-
-   // TODO: Implement Unit Test for Valid Port
-   public void testIsValidPortUnitTest() {
-      // Unit test for testing valid Port
-
-   }
-
 }
